@@ -9,6 +9,7 @@ import Agendamentos from 'pages/gestaoclean/Agendamentos';
 import OrdensServico from 'pages/gestaoclean/OrdensServico';
 import Pagamentos from 'pages/gestaoclean/Pagamentos';
 import Despesas from 'pages/gestaoclean/Despesas';
+import Usuarios from 'pages/gestaoclean/Usuarios';
 function PrivateLayout() {
   const [ready, setReady] = useState(false);
   useEffect(() => {
@@ -28,6 +29,7 @@ const MainRoutes={path:'/',element:<PrivateLayout/>,children:[
  {path:'ordens-servico',element:<OrdensServico/>},
  {path:'pagamentos',element:<AdminOnly><Pagamentos/></AdminOnly>},
  {path:'despesas',element:<AdminOnly><Despesas/></AdminOnly>},
- ...['clientes','usuarios'].map(resource=>({path:resource,element:['pagamentos','despesas','usuarios'].includes(resource)?<AdminOnly><Resource resource={resource}/></AdminOnly>:<Resource resource={resource}/> }))
+ {path:'usuarios',element:<AdminOnly><Usuarios/></AdminOnly>},
+ ...['clientes'].map(resource=>({path:resource,element:<Resource resource={resource}/> }))
 ]};
 export default MainRoutes;
