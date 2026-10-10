@@ -108,7 +108,5 @@ dist
 
 # wincompare file
 .bak
-# Variaveis de ambiente
-.env
-.env.*
-!.env.example
+# IntelliJ IDEA
+.idea/
