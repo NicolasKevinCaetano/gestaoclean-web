@@ -134,8 +134,8 @@ export default function OrdensServico() {
 
   return <Stack spacing={2}>
     <Stack direction={{ xs: 'column', sm: 'row' }} justifyContent="space-between" alignItems={{ sm: 'center' }} gap={2}>
-      <Box><Typography variant="h4">Ordens de Serviço</Typography><Typography color="text.secondary">Acompanhe a execução dos atendimentos da Higienizei.</Typography></Box>
-      <Stack direction="row" spacing={1} flexWrap="wrap"><Button variant="contained" onClick={abrirNovo}>Nova OS</Button><Button variant="outlined" onClick={carregar}>Atualizar</Button></Stack>
+      <Box sx={{ flex: 1, minWidth: 0 }}><Typography variant="h4">Ordens de Serviço</Typography><Typography color="text.secondary">Acompanhe a execução dos atendimentos da Higienizei.</Typography></Box>
+      <Stack direction="row" spacing={1} flexWrap="wrap" sx={{ flexShrink: 0, alignSelf: { xs: "flex-start", sm: "center" } }}><Button variant="contained" onClick={abrirNovo}>Nova OS</Button><Button variant="outlined" onClick={carregar}>Atualizar</Button></Stack>
     </Stack>
     {sucesso && <Alert severity="success" onClose={() => setSucesso('')}>{sucesso}</Alert>}
     {erro && <Alert severity="error" onClose={() => setErro('')}>{erro}</Alert>}

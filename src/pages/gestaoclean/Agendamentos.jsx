@@ -129,8 +129,8 @@ export default function Agendamentos() {
 
   return <Stack spacing={2}>
     <Stack direction={{ xs: 'column', sm: 'row' }} justifyContent="space-between" alignItems={{ sm: 'center' }} gap={1}>
-      <Box><Typography variant="h4">Agendamentos</Typography><Typography color="text.secondary">Atendimentos e serviços da Higienizei</Typography></Box>
-      <Stack direction="row" spacing={1}><Button variant="contained" onClick={abrirNovo}>Novo agendamento</Button><Button variant="outlined" onClick={carregar}>Atualizar</Button></Stack>
+      <Box sx={{ flex: 1, minWidth: 0 }}><Typography variant="h4">Agendamentos</Typography><Typography color="text.secondary">Atendimentos e serviços da Higienizei</Typography></Box>
+      <Stack direction="row" spacing={1} sx={{ flexShrink: 0, alignSelf: { xs: "flex-start", sm: "center" } }}><Button variant="contained" onClick={abrirNovo}>Novo agendamento</Button><Button variant="outlined" onClick={carregar}>Atualizar</Button></Stack>
     </Stack>
     {sucesso && <Alert severity="success" onClose={() => setSucesso('')}>{sucesso}</Alert>}
     {erro && <Alert severity="error" onClose={() => setErro('')}>{erro}</Alert>}

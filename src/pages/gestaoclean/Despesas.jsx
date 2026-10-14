@@ -112,8 +112,8 @@ export default function Despesas() {
 
   return <Stack spacing={2}>
     <Stack direction={{ xs: 'column', sm: 'row' }} justifyContent="space-between" alignItems={{ sm: 'center' }} gap={2}>
-      <Box><Typography variant="h4">Despesas</Typography><Typography color="text.secondary">Gerencie os gastos da Higienizei e acompanhe os custos por categoria e período.</Typography></Box>
-      <Stack direction="row" spacing={1}><Button variant="contained" onClick={() => abrir()}>Nova despesa</Button><Button variant="outlined" onClick={carregar}>Atualizar</Button></Stack>
+      <Box sx={{ flex: 1, minWidth: 0 }}><Typography variant="h4">Despesas</Typography><Typography color="text.secondary">Gerencie os gastos da Higienizei e acompanhe os custos por categoria e período.</Typography></Box>
+      <Stack direction="row" spacing={1} sx={{ flexShrink: 0, alignSelf: { xs: "flex-start", sm: "center" } }}><Button variant="contained" onClick={() => abrir()}>Nova despesa</Button><Button variant="outlined" onClick={carregar}>Atualizar</Button></Stack>
     </Stack>
     {sucesso && <Alert severity="success" onClose={() => setSucesso('')}>{sucesso}</Alert>}
     {erro && <Alert severity="error" onClose={() => setErro('')}>{erro}</Alert>}
@@ -122,13 +122,19 @@ export default function Despesas() {
       <Paper variant="outlined" sx={{ p: 2, flex: 1 }}><Typography variant="body2" color="text.secondary">Quantidade de lançamentos</Typography><Typography variant="h5">{visiveis.length}</Typography></Paper>
       <Paper variant="outlined" sx={{ p: 2, flex: 1 }}><Typography variant="body2" color="text.secondary">Categorias com gastos</Typography><Typography variant="h5">{Object.keys(porCategoria).length}</Typography></Paper>
     </Stack>
-    <Stack direction={{ xs: 'column', md: 'row' }} spacing={2} flexWrap="wrap">
-      <TextField size="small" label="Pesquisar descrição ou observações" value={busca} onChange={e => setBusca(e.target.value)} sx={{ minWidth: 240, flex: 1 }} />
+    <Stack direction={{ xs: 'column', md: 'row' }} spacing={2} useFlexGap flexWrap="wrap" alignItems={{ md: "center" }}>
+      <TextField size="small" label="Pesquisar descrição ou observações" value={busca} onChange={e => setBusca(e.target.value)} sx={{ minWidth: { xs: "100%", md: 240 }, flex: 1 }} />
       <TextField select size="small" label="Categoria" value={categoria} onChange={e => setCategoria(e.target.value)} sx={{ minWidth: 180 }}>
         <MenuItem value="">Todas as categorias</MenuItem>{categorias.map(c => <MenuItem key={c} value={c}>{c}</MenuItem>)}
       </TextField>
-      <TextField size="small" label="Data inicial" type="date" value={inicio} onChange={e => setInicio(e.target.value)} InputLabelProps={{ shrink: true }} />
-      <TextField size="small" label="Data final" type="date" value={fim} onChange={e => setFim(e.target.value)} InputLabelProps={{ shrink: true }} />
+      <Box sx={{ width: { xs: "100%", sm: 190 }, minWidth: { sm: 175 }, flexShrink: 0 }}>
+        <Typography component="label" htmlFor="despesas-data-inicial" variant="caption" color="text.secondary" sx={{ display: "block", mb: 0.5 }}>Data inicial</Typography>
+        <TextField id="despesas-data-inicial" size="small" type="date" value={inicio} onChange={e => setInicio(e.target.value)} inputProps={{ "aria-label": "Data inicial" }} fullWidth />
+      </Box>
+      <Box sx={{ width: { xs: "100%", sm: 190 }, minWidth: { sm: 175 }, flexShrink: 0 }}>
+        <Typography component="label" htmlFor="despesas-data-final" variant="caption" color="text.secondary" sx={{ display: "block", mb: 0.5 }}>Data final</Typography>
+        <TextField id="despesas-data-final" size="small" type="date" value={fim} onChange={e => setFim(e.target.value)} inputProps={{ "aria-label": "Data final" }} fullWidth />
+      </Box>
       <Button variant="text" onClick={() => { setBusca(''); setCategoria(''); setInicio(''); setFim(''); }}>Limpar filtros</Button>
     </Stack>
     {filtrosInvalidos && <Alert severity="info">Para filtrar por período, informe as duas datas, com a inicial anterior ou igual à final.</Alert>}

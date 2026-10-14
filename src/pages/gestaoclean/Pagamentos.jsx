@@ -103,11 +103,11 @@ export default function Pagamentos() {
 
   return <Stack spacing={2}>
     <Stack direction={{ xs: 'column', sm: 'row' }} justifyContent="space-between" alignItems={{ sm: 'center' }} gap={2}>
-      <Box>
+      <Box sx={{ flex: 1, minWidth: 0 }}>
         <Typography variant="h4">Pagamentos</Typography>
         <Typography color="text.secondary">Controle os recebimentos vinculados às Ordens de Serviço da Higienizei.</Typography>
       </Box>
-      <Stack direction="row" spacing={1}>
+      <Stack direction="row" spacing={1} sx={{ flexShrink: 0, alignSelf: { xs: "flex-start", sm: "center" } }}>
         <Button variant="contained" onClick={abrirNovo}>Novo pagamento</Button>
         <Button variant="outlined" onClick={carregar}>Atualizar</Button>
       </Stack>

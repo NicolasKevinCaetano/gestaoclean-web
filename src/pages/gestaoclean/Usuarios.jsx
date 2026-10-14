@@ -84,8 +84,8 @@ export default function Usuarios() {
   return (
     <Stack spacing={3}>
       <Stack direction={{ xs: 'column', sm: 'row' }} justifyContent="space-between" alignItems={{ xs: 'stretch', sm: 'center' }} spacing={2}>
-        <Box><Typography variant="h4">Usuários</Typography><Typography color="text.secondary">Gerencie os funcionários e o acesso à Higienizei.</Typography></Box>
-        <Button variant="contained" onClick={abrirNovo}>Novo funcionário</Button>
+        <Box sx={{ flex: 1, minWidth: 0 }}><Typography variant="h4">Usuários</Typography><Typography color="text.secondary">Gerencie os funcionários e o acesso à Higienizei.</Typography></Box>
+        <Button variant="contained" onClick={abrirNovo} sx={{ flexShrink: 0, alignSelf: { xs: "flex-start", sm: "center" } }}>Novo funcionário</Button>
       </Stack>
       {erro && <Alert severity="error" onClose={() => setErro('')}>{erro}</Alert>}
       {sucesso && <Alert severity="success" onClose={() => setSucesso('')}>{sucesso}</Alert>}
