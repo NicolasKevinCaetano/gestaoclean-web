@@ -121,11 +121,6 @@ export default function Profile() {
                           </Typography>
                         </Stack>
                       </Stack>
-                      <Tooltip title="Logout">
-                        <IconButton size="large" sx={{ color: 'text.primary' }}>
-                          <LogoutOutlined />
-                        </IconButton>
-                      </Tooltip>
                     </Stack>
                   </CardContent>
 
